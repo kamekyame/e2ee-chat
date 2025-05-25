@@ -65,7 +65,7 @@ export const verifyDecryption = (
  * ユーザー名を元に5種類の鍵を生成するため、5で割った余りを返す
  * これにより、5人に1人が同じ鍵を持ち、メッセージを復号できる
  * @param username ユーザー名
- * @returns 数値の秘密鍵 (0-4の範囲)
+ * @returns 数値の秘密鍵 (0-5の範囲)
  */
 export const username2key = (username: string | undefined): number => {
   if (!username) return 0;
@@ -74,5 +74,5 @@ export const username2key = (username: string | undefined): number => {
   for (let i = 0; i < username.length; i++) {
     key += username.charCodeAt(i);
   }
-  return key % 5; // 5で割った余りを返す（0-4の値）
+  return key % 5 + 1; // 5で割った余りを返す（1-5の値）
 };
