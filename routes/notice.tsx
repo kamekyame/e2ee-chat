@@ -2,7 +2,9 @@ export default function Notice() {
   return (
     <div className="line-bg min-h-dvh flex flex-col">
       <div className="line-header">
-        <h1 className="text-lg sm:text-2xl font-bold">注意事項</h1>
+        <a href="/" className="">
+          <h1 className="text-lg sm:text-2xl font-bold">注意事項</h1>
+        </a>
       </div>
 
       <div className="flex-grow flex flex-col w-full max-w-md mx-auto p-4">
@@ -22,6 +24,16 @@ export default function Notice() {
             この仕組みにより、5人に1人が同じ鍵を持つ可能性があります。
           </li>
         </ul>
+        <div className="mt-4">
+          <a href="https://fresh.deno.dev">
+            <img
+              width="197"
+              height="37"
+              src="https://fresh.deno.dev/fresh-badge.svg"
+              alt="Made with Fresh"
+            />
+          </a>
+        </div>
       </div>
 
       <div className="py-2 px-3 text-xs sm:text-sm text-gray-600 text-center bg-white/80 rounded-t-lg shadow-inner mt-auto">
