@@ -7,6 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $api_message from "./routes/api/message.ts";
 import * as $api_message_stream from "./routes/api/message/stream.ts";
 import * as $index from "./routes/index.tsx";
+import * as $notice from "./routes/notice.tsx";
 import * as $ChatContainer from "./islands/ChatContainer.tsx";
 import * as $MessageList from "./islands/MessageList.tsx";
 import * as $MessageSender from "./islands/MessageSender.tsx";
@@ -20,6 +21,7 @@ const manifest = {
     "./routes/api/message.ts": $api_message,
     "./routes/api/message/stream.ts": $api_message_stream,
     "./routes/index.tsx": $index,
+    "./routes/notice.tsx": $notice,
   },
   islands: {
     "./islands/ChatContainer.tsx": $ChatContainer,

@@ -22,8 +22,11 @@ export default function Home() {
           <p class="mt-1">
             こころが通じ合う人（ここつびと）のメッセージのみ読むことができます。
           </p>
-          <p class="text-xs mt-2 text-gray-400">
+          <p class="flex gap-2 justify-center text-xs mt-2 text-gray-400">
             © 2025 kamekyame
+            <a href="/notice" className="text-blue-500 underline">
+              注意事項
+            </a>
           </p>
         </div>
       </div>
