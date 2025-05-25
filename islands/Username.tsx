@@ -1,6 +1,7 @@
 import type { Signal } from "@preact/signals";
 import { useEffect, useRef } from "preact/hooks";
 import { Button } from "../components/Button.tsx";
+import { username2key } from "../src/e2ee.ts";
 
 interface UsernameProps {
   username: Signal<string | undefined>;
@@ -53,7 +54,7 @@ export function Username(props: UsernameProps) {
           </div>
         )
         : (
-          <div class="bg-white/80 rounded-lg p-3 shadow-sm flex flex-row items-center justify-between">
+          <div class="bg-white/80 rounded-lg p-3 shadow-sm flex flex-row items-center justify-between gap-2">
             <div class="flex items-center gap-2">
               <div class="w-8 h-8 rounded-full bg-[#06c755] flex items-center justify-center text-white font-bold">
                 {props.username.value.charAt(0).toUpperCase()}
@@ -61,7 +62,10 @@ export function Username(props: UsernameProps) {
               <p class="font-bold text-sm sm:text-base">
                 {props.username.value}
               </p>
-            </div>{" "}
+            </div>
+            <div class="flex flex-1 gap-2 text-sm text-gray-600">
+              🔑{username2key(props.username.value)}
+            </div>
             <Button
               onClick={() => {
                 props.username.value = undefined;
