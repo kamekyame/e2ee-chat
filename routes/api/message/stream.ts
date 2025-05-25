@@ -1,6 +1,7 @@
 import { FreshContext, Handlers } from "$fresh/server.ts";
+import { getBroadcastChannel } from "../../../src/broadcastChannel.ts";
 
-const channel = new BroadcastChannel("message_channel");
+const channel = getBroadcastChannel();
 const controllers: ReadableStreamDefaultController[] = [];
 
 // 接続が切れたコントローラーを定期的に削除する関数
@@ -17,24 +18,29 @@ const cleanupControllers = () => {
 };
 
 // 30秒ごとにクリーンアップを実行
-setInterval(cleanupControllers, 30000);
+const isBuildMode = Deno.args.includes("build");
+if (!isBuildMode) {
+  setInterval(cleanupControllers, 30000);
+}
 
-channel.onmessage = (event) => {
-  const message = event.data;
-  for (const controller of controllers) {
-    try {
-      controller.enqueue(
-        new TextEncoder().encode(`data: ${JSON.stringify(message)}\n\n`),
-      );
-    } catch (_error) {
-      // エラーが発生した場合はコントローラーをリストから削除
-      const index = controllers.indexOf(controller);
-      if (index !== -1) {
-        controllers.splice(index, 1);
+if (channel) {
+  channel.onmessage = (event) => {
+    const message = event.data;
+    for (const controller of controllers) {
+      try {
+        controller.enqueue(
+          new TextEncoder().encode(`data: ${JSON.stringify(message)}\n\n`),
+        );
+      } catch (_error) {
+        // エラーが発生した場合はコントローラーをリストから削除
+        const index = controllers.indexOf(controller);
+        if (index !== -1) {
+          controllers.splice(index, 1);
+        }
       }
     }
-  }
-};
+  };
+}
 
 export const handler: Handlers = {
   GET(_req: Request, _ctx: FreshContext) {
