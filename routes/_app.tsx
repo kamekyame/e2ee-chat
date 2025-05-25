@@ -11,11 +11,12 @@ export default function App({ Component }: PageProps) {
         />
         <meta name="theme-color" content="#f3f4f6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <title>E2EE Chat - 端末間暗号化チャット</title>
+        <title>ここつびと - 簡易 E2EE チャットアプリ</title>
         <meta
           name="description"
-          content="シンプルな端末間暗号化（E2EE）チャットアプリケーション"
+          content="心通じる人（ここつびと）しかメッセージが見れない、端末間暗号化（E2EE）を使用したチャットアプリ"
         />
+        <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body class="h-full">
