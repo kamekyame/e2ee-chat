@@ -1,16 +1,34 @@
-# Fresh project
+# ここつびと
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+ここつびとは、心通じる人（ここつびと）しかメッセージが見れない、端末間暗号化（E2EE）を使用したチャットアプリです。このアプリはイベント用の遊びの実装として作られました。
 
-### Usage
+## 特徴
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+- **端末間暗号化（E2EE）**: メッセージは安全に保護され、他の人には見られません。
+- **データ非保存**:
+  サーバーにデータを保存しないため、画面を閉じるとメッセージは消えます。
+- **簡単な鍵生成**:
+  ユーザー名から秘密鍵を生成し、5人に1人が同じ鍵を持つ可能性があります。
 
-Then start the project:
+## 注意事項
+
+- このアプリは暗号化が強力ではありません。
+- 5人に1人がメッセージを復号できる可能性があります。
+- イベント用の遊びの実装として設計されています。
+
+## 使用方法
+
+### 必要な環境
+
+- [Deno](https://deno.land/manual/getting_started/installation)
+  をインストールしてください。
+
+### プロジェクトの起動
+
+以下のコマンドでプロジェクトを起動します:
 
 ```
 deno task start
 ```
 
-This will watch the project directory and restart as necessary.
+このコマンドはプロジェクトディレクトリを監視し、必要に応じて再起動します。
